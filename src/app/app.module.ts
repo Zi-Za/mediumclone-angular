@@ -9,6 +9,7 @@ import { AppComponent } from 'src/app/app.component';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
+import { TopBarModule } from './shared/modules/topBar/topBar.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { EffectsModule } from '@ngrx/effects';
       trace: false, 
       traceLimit: 75, 
     }),
+    TopBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
