@@ -7,9 +7,12 @@ import { isDevMode } from '@angular/core';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { AuthModule } from 'src/app/auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { TopBarModule } from './shared/modules/topBar/topBar.module';
+import { PersistanceService } from './shared/services/persistance.service';
+import { AuthInterceptor } from './shared/services/authinterceptor.service';
+import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 
 
 @NgModule({
@@ -30,9 +33,17 @@ import { TopBarModule } from './shared/modules/topBar/topBar.module';
       trace: false, 
       traceLimit: 75, 
     }),
-    TopBarModule
+    TopBarModule,
+    GlobalFeedModule
   ],
-  providers: [],
+  providers: [
+    PersistanceService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
