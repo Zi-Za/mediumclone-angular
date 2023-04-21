@@ -7,13 +7,17 @@ import { StoreModule } from "@ngrx/store";
 import { reducers } from "src/app/shared/modules/feed/store/reducers";
 import { FeedService } from "src/app/shared/modules/feed/services/feed.service";
 import { RouterModule } from "@angular/router";
+import { ErrorMessageModule } from "src/app/shared/modules/errorMessage/error.message.module";
+import { LoadingModule } from "../loading/loading.module";
 
 @NgModule({
   imports: [
     CommonModule, 
     EffectsModule.forFeature([GetFeedEffect]), 
     StoreModule.forFeature('feed', reducers),
-    RouterModule
+    RouterModule,
+    ErrorMessageModule,
+    LoadingModule
   ],
   declarations: [FeedComponent],
   exports: [FeedComponent],

@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 
 import { CurrentUserInterface } from "src/app/shared/types/currentUser.interface";
 import { RegisterRequestInterface } from "../types/registerRequest.interface";
-import { environment } from "src/enviroments/enviroment";
+import { environment } from "src/environments/environment";
 import { AuthResponseInterface } from "../types/authResponse.interface";
 import { LoginRequestInterface } from "src/app/auth/types/loginRequest.interface";
 
