@@ -8,7 +8,8 @@ import { reducers } from "src/app/shared/modules/feed/store/reducers";
 import { FeedService } from "src/app/shared/modules/feed/services/feed.service";
 import { RouterModule } from "@angular/router";
 import { ErrorMessageModule } from "src/app/shared/modules/errorMessage/error.message.module";
-import { LoadingModule } from "../loading/loading.module";
+import { LoadingModule } from "src/app/shared/modules/loading/loading.module";
+import { PaginationModule } from "src/app/shared/modules/pagination/pagination.module";
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { LoadingModule } from "../loading/loading.module";
     StoreModule.forFeature('feed', reducers),
     RouterModule,
     ErrorMessageModule,
-    LoadingModule
+    LoadingModule,
+    PaginationModule
   ],
   declarations: [FeedComponent],
   exports: [FeedComponent],
