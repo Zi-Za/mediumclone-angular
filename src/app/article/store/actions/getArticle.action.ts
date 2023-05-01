@@ -4,12 +4,12 @@ import { ArticleInterface } from "src/app/shared/types/article.interface";
 
 export const getArticleAction = createAction(
   ActionTypes.GET_ARTICLE, 
-  props<{slug: string}>()
+  props<{slug: string | null}>()
 )
 
 export const getArticleSuccessAction = createAction(
   ActionTypes.GET_ARTICLE_SUCCESS, 
-  props<{article: ArticleInterface}>()
+  props<{article: ArticleInterface | null}>()
 )
 
 export const getArticleFailureAction = createAction(

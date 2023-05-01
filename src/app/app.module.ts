@@ -16,6 +16,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { YourFeedModule } from './yourFeed/yourFeed.module';
 import { AuthInterceptor } from './shared/services/authInterceptor.service';
 import { TagFeedModule } from './tagFeed/tagFeed.module';
+import { ArticleModule } from './article/article.module';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { TagFeedModule } from './tagFeed/tagFeed.module';
     TopBarModule,
     GlobalFeedModule,
     YourFeedModule,
-    TagFeedModule
+    TagFeedModule,
+    ArticleModule
   ],
   providers: [
     PersistanceService,
