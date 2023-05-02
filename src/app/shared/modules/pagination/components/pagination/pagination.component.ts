@@ -3,8 +3,8 @@ import { UtilsService } from "src/app/shared/services/util.service";
 
 @Component({
   selector: 'mc-pagination',
-  templateUrl: '/pagination.component.html',
-  styleUrls: ['/pagination.component.scss']
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit{
   @Input('total') totalProps?: number

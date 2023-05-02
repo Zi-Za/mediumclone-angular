@@ -3,8 +3,8 @@ import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: 'mc-tag-feed',
-  templateUrl: '/tagFeed.component.html',
-  styleUrls: ['/tagFeed.component.scss']
+  templateUrl: './tagFeed.component.html',
+  styleUrls: ['./tagFeed.component.scss']
 })
 export class TagFeedComponent implements OnInit {
   apiUrl!: string

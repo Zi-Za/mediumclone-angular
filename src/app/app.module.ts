@@ -17,6 +17,7 @@ import { YourFeedModule } from './yourFeed/yourFeed.module';
 import { AuthInterceptor } from './shared/services/authInterceptor.service';
 import { TagFeedModule } from './tagFeed/tagFeed.module';
 import { ArticleModule } from './article/article.module';
+import { CreateArticleModule } from './createArticle/createArticle.module';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ArticleModule } from './article/article.module';
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    CreateArticleModule,
     ArticleModule
   ],
   providers: [
