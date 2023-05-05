@@ -3,4 +3,4 @@ export interface ArticleInputInterface {
   description: string
   body: string
   tagList: string[]
-}
+} 

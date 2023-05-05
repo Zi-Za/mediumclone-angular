@@ -11,6 +11,7 @@ import {
   loginSuccessAction 
 } from "./actions/login.action";
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/getCurrentUser";
+import { updateCurrentUserSuccessAction } from "./actions/updateCurrentUser.action";
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -97,6 +98,13 @@ const authReducer = createReducer(
       currentUser: null
     })
   ),
+  on(
+    updateCurrentUserSuccessAction, 
+    (state, action): AuthStateInterface => ({
+      ...state,
+      currentUser: action.currentUser
+    })
+  )
 )
 
 export function reducers(state: AuthStateInterface, action: Action) {
