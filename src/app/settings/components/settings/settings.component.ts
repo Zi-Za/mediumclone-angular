@@ -6,6 +6,9 @@ import { currentUserSelector } from "src/app/auth/store/selectors";
 import { BackendErrorsInterface } from "src/app/shared/types/backendErrors.interface";
 import { CurrentUserInterface } from "src/app/shared/types/currentUser.interface";
 import { isSubmittingSelector, validationErrorsSelector } from "src/app/settings/store/selectors";
+import { updateCurrentUserAction } from "src/app/auth/store/actions/updateCurrentUser.action";
+import { CurrentUserInputInterface } from "src/app/shared/types/currentUserInput.interface";
+import { logoutAction } from "src/app/auth/store/actions/sync.action";
 
 @Component({
   selector: 'mc-settings',
@@ -34,6 +37,16 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.backendErrors$ = this.store.pipe((select(validationErrorsSelector)) as any)
   }
 
+  initializeForm(): void {
+    this.form = this.fb.group({
+      image: this.currentUser.image,
+      username: this.currentUser.username,
+      bio: this.currentUser.bio,
+      email: this.currentUser.email,
+      password: ''
+    })
+  }
+
   initializeListeners(): void {
     this.currentUserSubscription = this.store
       .pipe(select(currentUserSelector as any ), filter(Boolean))
@@ -43,13 +56,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
       })
   }
 
-  initializeForm(): void {
-    this.form = this.fb.group({
-      image: this.currentUser.image,
-      username: this.currentUser.username,
-      bio: this.currentUser.bio,
-      email: this.currentUser.email,
-      password: ''
-    })
+  submit(): void {
+    const currentUserInput: CurrentUserInputInterface = {
+      ...this.currentUser,
+      ...this.form.value
+    }
+    this.store.dispatch(updateCurrentUserAction({currentUserInput}))
+  }
+
+  logout(): void {
+    this.store.dispatch(logoutAction())
   }
 }

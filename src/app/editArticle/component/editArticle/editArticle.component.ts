@@ -8,10 +8,8 @@ import {
   isSubmittingSelector, 
   validationErrorsSelector 
 } from "../../store/selectors";
-import { createArticleAction } from "src/app/createArticle/store/actions/createArticle.action";
 import { ActivatedRoute } from "@angular/router";
 import { getArticleAction } from "../../store/actions/getArticle.action";
-import { ArticleInterface } from "src/app/shared/types/article.interface";
 import { updateArticleAction } from "../../store/actions/updateArticle.action";
 
 
@@ -37,17 +35,6 @@ export class EditArticleComponent implements OnInit {
     this.slug = this.route.snapshot.paramMap.get('slug') as any;
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector as any))
     this.backendErrors$ = this.store.pipe(select(validationErrorsSelector as any))
-    const m = this.store.pipe(
-      select(articleSelector as any), 
-      filter(Boolean), 
-      map((article: any) => {
-      return {
-        title: article.title,
-        description: article.description,
-        body: article.body,
-        tagList: article.tagList
-      }
-    }))
     this.initialValues$ = (this.store.pipe(
       select(articleSelector as any), 
       filter(Boolean), 
